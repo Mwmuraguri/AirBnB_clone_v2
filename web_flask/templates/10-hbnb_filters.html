@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HBNB Clone</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/4-common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="HBNB Clone"></a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="filters">
+                        <h3>States</h3>
+                        <ul class="list-group">
+                            {% for state in states %}
+                                <li class="list-group-item"><a href="#">{{ state.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+
+                        <h3>Amenities</h3>
+                        <ul class="list-group">
+                            {% for amenity in amenities %}
+                                <li class="list-group-item"><a href="#">{{ amenity.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="properties">
+                        <h2>Properties</h2>
+
+                        <div class="row">
+                            {% for city in cities %}
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img class="card-img-top" src="{{ city.image_url }}" alt="{{ city.name }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ city.name }}</h5>
+                                            <p class="card-text">{{ city.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2023 HBNB Clone</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
