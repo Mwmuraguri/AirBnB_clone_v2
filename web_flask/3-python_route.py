@@ -1,36 +1,33 @@
 #!/usr/bin/python3
-"""model - flask app"""
+"""Flask framework"""
 from flask import Flask
-
 
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
-def hello_hbnb():
-    """ empty function that returns the string hello hbnb"""
-    return "hello HBNB!"
+@app.route("/", strict_slashes=False)
+def hello_world():
+    """return hello HBNB"""
+    return "Hello HBNB!"
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route("/hbnb", strict_slashes=False)
 def hbnb():
-    """an empty string that returns the string HBNB"""
+    """return HBNB"""
     return "HBNB"
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def display_c(text):
-    """a function to display text based on c"""
-    text = text.replace('_', ' ')
-    return 'C ' + '{}'.format(text)
+def text(text):
+    """return text given"""
+    return "C {}".format(text.replace("_", " "))
 
 
-@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/', defaults={'text': 'is_cool'})
 @app.route('/python/<text>', strict_slashes=False)
-def python_text(text):
-    """function that display “Python ”, followed by the value of the text variable"""
-    text = text.replace('_', ' ')
-    return 'Python {}'.format(text)
+def display(text):
+    """display “Python ”, followed by the value of the text"""
+    return "Python {}".format(text.replace("_", " "))
 
 
 if __name__ == '__main__':
